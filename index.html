@@ -292,6 +292,7 @@
       display: flex;
       flex-direction: column;
       gap: 7px;
+      min-width: 0;
     }
 
     label {
@@ -306,10 +307,11 @@
     input[type="time"],
     input[type="text"] {
       width: 100%;
+      min-width: 0;
       padding: 13px 16px;
       border: 2px solid #ede8e3;
       border-radius: 12px;
-      font-size: .97rem;
+      font-size: 1rem;
       font-family: 'Montserrat', sans-serif;
       color: var(--espresso);
       background: var(--cream);
@@ -388,8 +390,8 @@
     }
 
     /* ── Responsive ──────────────────────────────────────── */
-    @media (max-width: 520px) {
-      .card, .form-card { padding: 36px 24px; }
+    @media (max-width: 600px) {
+      .card, .form-card { padding: 36px 20px; }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
