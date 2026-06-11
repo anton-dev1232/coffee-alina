@@ -394,6 +394,18 @@
       .card, .form-card { padding: 36px 20px; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    @media (max-width: 420px) {
+      #btn-area {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      #btn-yes, #btn-no {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -524,6 +536,13 @@
 
   btnNo.addEventListener('mouseenter', escapeNo);
   btnNo.addEventListener('touchstart', (e) => { e.preventDefault(); escapeNo(); });
+
+  /* Hide "No" when invite section scrolls out of view */
+  window.addEventListener('scroll', () => {
+    if (yesClicked || !noFixed) return;
+    const inviteBottom = document.getElementById('invite-section').getBoundingClientRect().bottom;
+    btnNo.classList.toggle('faded', inviteBottom < 0);
+  }, { passive: true });
 
   /* --- Yes clicked --- */
   let yesClicked = false;
