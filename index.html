@@ -391,8 +391,19 @@
 
     /* ── Responsive ──────────────────────────────────────── */
     @media (max-width: 600px) {
-      .card, .form-card { padding: 36px 20px; }
-      .form-row { grid-template-columns: 1fr; }
+      section { padding: 32px 12px; }
+      .card, .form-card { padding: 28px 16px; }
+      .form-row { grid-template-columns: 1fr; gap: 10px; }
+      .place-group { margin-bottom: 18px; }
+
+      input[type="date"],
+      input[type="time"],
+      input[type="text"] {
+        padding: 10px 12px;
+        font-size: 16px;
+      }
+
+      .btn-submit { padding: 13px; }
     }
 
     @media (max-width: 420px) {
