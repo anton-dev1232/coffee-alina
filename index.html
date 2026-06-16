@@ -354,8 +354,10 @@
         }
 
         /* === MOBILE === */
+        .time-input-wrap { overflow: hidden; width: 100%; }
+
         @media (max-width: 480px) {
-            .card { padding: 38px 16px 28px; border-radius: 22px; overflow: hidden; }
+            .card { padding: 38px 16px 28px; border-radius: 22px; }
             .card-flowers { top: -22px; }
             .card h1 { font-size: 1.6rem; }
             .question { font-size: 1.05rem; }
@@ -425,7 +427,9 @@
                 <button class="time-preset" onclick="pickPreset('21:00',this)">21:00</button>
             </div>
 
-            <input type="time" class="time-input" id="time-input" value="18:00">
+            <div class="time-input-wrap">
+                <input type="time" class="time-input" id="time-input" value="18:00">
+            </div>
 
             <button class="confirm-btn" onclick="confirmTime()">Готово! ✨</button>
             <button class="back-btn" onclick="goBack()">← Назад</button>
