@@ -245,10 +245,12 @@
 
         .time-input {
             width: 100%;
-            padding: 13px 16px;
+            max-width: 100%;
+            min-width: 0;
+            padding: 12px 10px;
             border: 1.5px solid var(--border);
             border-radius: 14px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             text-align: center;
             color: var(--rose-deep);
             font-family: 'Nunito', sans-serif;
@@ -257,6 +259,9 @@
             background: rgba(255,255,255,.85);
             margin-bottom: 20px;
             transition: border-color .2s, box-shadow .2s;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
         }
         .time-input:focus {
             border-color: var(--rose);
@@ -350,12 +355,15 @@
 
         /* === MOBILE === */
         @media (max-width: 480px) {
-            .card { padding: 38px 16px 28px; border-radius: 22px; }
+            .card { padding: 38px 16px 28px; border-radius: 22px; overflow: hidden; }
+            .card-flowers { top: -22px; }
             .card h1 { font-size: 1.6rem; }
             .question { font-size: 1.05rem; }
             .option-btn { padding: 12px 13px; font-size: .88rem; }
             .option-btn .ico { font-size: 1.25rem; }
-            .time-input { font-size: 1.3rem; }
+            .time-input { font-size: 1rem; padding: 11px 8px; }
+            .time-presets { gap: 6px; }
+            .time-preset { padding: 6px 10px; font-size: .82rem; }
             .section-title { font-size: 1.15rem; }
             .success-title { font-size: 1.3rem; }
         }
@@ -387,16 +395,13 @@
                 <button class="option-btn opt-1" onclick="selectOpt('billiards','🎱 Бильярд', this)">
                     <span class="ico">🎱</span><span>Бильярд</span>
                 </button>
-                <button class="option-btn opt-2" onclick="selectOpt('walk','🌿 Вайбово погулять', this)">
-                    <span class="ico">🌿</span><span>Вайбово погулять</span>
+                <button class="option-btn opt-2" onclick="selectOpt('walk','🌿🌊 Вайбово погулять / посмотреть на залив под безкалорийный лимонадик', this)">
+                    <span class="ico">🌿🌊</span><span>Вайбово погулять / посмотреть на залив под безкалорийный лимонадик</span>
                 </button>
-                <button class="option-btn opt-3" onclick="selectOpt('bay','🌊 Посмотреть на залив под безкалорийный лимонадик', this)">
-                    <span class="ico">🌊</span><span>Посмотреть на залив под безкалорийный лимонадик</span>
-                </button>
-                <button class="option-btn opt-4" onclick="selectOpt('cinema','🎬 Кинотеатр', this)">
+                <button class="option-btn opt-3" onclick="selectOpt('cinema','🎬 Кинотеатр', this)">
                     <span class="ico">🎬</span><span>Кинотеатр</span>
                 </button>
-                <button class="option-btn opt-5" onclick="selectOpt('food','🍰 Сходить покушать чего-нибудь вкусненького', this)">
+                <button class="option-btn opt-4" onclick="selectOpt('food','🍰 Сходить покушать чего-нибудь вкусненького', this)">
                     <span class="ico">🍰</span><span>Сходить покушать чего-нибудь вкусненького</span>
                 </button>
                 <button class="option-btn opt-6" onclick="selectTired(this)">
