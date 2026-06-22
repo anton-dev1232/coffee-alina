@@ -600,7 +600,7 @@
             </g>
         </svg>
 
-        <h1 class="site-name">Умная блондинка</h1>
+        <h1 class="site-name">Юля</h1>
         <p class="site-sub">личное приглашение</p>
 
         <p class="big-q">Пойдёшь со мной<br>на свидание?</p>
@@ -701,13 +701,16 @@ const CHAT_ID   = '1160362290';
 
 /* ── Restaurants ── */
 const PLACES = [
-    { name:'Корюшка',        desc:'На воде · вид на Неву и Петропавловскую крепость',    lat:59.9501, lng:30.3193 },
-    { name:'Гребешки',       desc:'Арсенальная набережная · панорамный вид на Неву',     lat:59.9540, lng:30.3617 },
-    { name:'Этаж 41',        desc:'41-й этаж · самый высокий ресторан Северной Европы',  lat:59.8488, lng:30.3177 },
-    { name:'Karl & Friedrich', desc:'Крестовский остров · пивоварня с видом на воду',    lat:59.9720, lng:30.2540 },
-    { name:'SunDay Ginza',   desc:'Крестовский остров · терраса с видом на Финский залив', lat:59.9706, lng:30.2430 },
-    { name:'Волна',          desc:'Парк 300-летия · вид на Финский залив',               lat:59.9805, lng:30.2048 },
-    { name:'Porto Maltese',  desc:'Итальянская улица · морской ресторан в центре',       lat:59.9396, lng:30.3310 },
+    { name:'Корюшка',        desc:'Петропавловская крепость · вид на Неву',               lat:59.9497, lng:30.3168 },
+    { name:'Terrassa',       desc:'Крыша на Казанской · вид на Казанский собор',          lat:59.9354, lng:30.3186 },
+    { name:'Мансарда',       desc:'Крыша БЦ Quattro Corti · вид на Исаакиевский собор',  lat:59.9330, lng:30.3042 },
+    { name:'Sky & Garden',   desc:'Крыша отеля Garden Street · вид на Спас-на-Крови',    lat:59.9390, lng:30.3328 },
+    { name:'Porto Maltese',  desc:'Итальянская улица · уютный морской ресторан',         lat:59.9381, lng:30.3290 },
+    { name:'Гребешки',       desc:'Арсенальная набережная · вид на Неву',                lat:59.9533, lng:30.3608 },
+    { name:'Karl & Friedrich', desc:'Крестовский остров · пивоварня на берегу',          lat:59.9665, lng:30.2528 },
+    { name:'SunDay Ginza',   desc:'Приморский парк Победы · терраса с видом на залив',   lat:59.9728, lng:30.2338 },
+    { name:'Волна',          desc:'Парк 300-летия · панорама Финского залива',            lat:59.9796, lng:30.2038 },
+    { name:'Этаж 41',        desc:'Площадь Конституции · 41-й этаж, самый высокий в СПб', lat:59.8476, lng:30.3195 },
 ];
 
 const TIME_CHIPS = ['11:00','13:00','15:00','17:00','19:00','21:00','23:00'];
@@ -764,7 +767,7 @@ window.addEventListener('resize', () => { if (noBtn.style.display === 'block') p
 /* ══ Map ═════════════════════════════════════ */
 function initMap() {
     mapReady = true;
-    lmap = L.map('map', { center:[59.944,30.316], zoom:12, attributionControl:false });
+    lmap = L.map('map', { center:[59.920,30.270], zoom:11, attributionControl:false });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         subdomains: 'abcd', maxZoom: 19
