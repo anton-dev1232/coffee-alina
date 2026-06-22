@@ -701,13 +701,13 @@ const CHAT_ID   = '1160362290';
 
 /* ── Restaurants ── */
 const PLACES = [
-    { name:'Корюшка',           desc:'На воде · вид на Неву и Петропавловскую крепость', check:'~1 800 ₽', lat:59.9501, lng:30.3198 },
-    { name:'Terrassa',          desc:'Панорамная крыша · вид на Казанский собор',         check:'~2 200 ₽', lat:59.9353, lng:30.3192 },
-    { name:'Mansarda',          desc:'Крыша · вид на Исаакиевский собор',                 check:'~2 300 ₽', lat:59.9330, lng:30.3038 },
-    { name:'Летучий Голландец', desc:'Ресторан на корабле · Дворцовая набережная',        check:'~1 500 ₽', lat:59.9435, lng:30.3103 },
-    { name:'Karl & Friedrich',  desc:'Панорамный вид · Кронверкский проспект',            check:'~1 800 ₽', lat:59.9537, lng:30.3183 },
-    { name:'Porto Maltese',     desc:'Морской ресторан · уютная атмосфера',               check:'~1 600 ₽', lat:59.9399, lng:30.3311 },
-    { name:'Волна',             desc:'Панорама Финского залива · парк 300-летия',         check:'~1 700 ₽', lat:59.9805, lng:30.2048 },
+    { name:'Корюшка',        desc:'На воде · вид на Неву и Петропавловскую крепость',    lat:59.9501, lng:30.3193 },
+    { name:'Гребешки',       desc:'Арсенальная набережная · панорамный вид на Неву',     lat:59.9540, lng:30.3617 },
+    { name:'Этаж 41',        desc:'41-й этаж · самый высокий ресторан Северной Европы',  lat:59.8488, lng:30.3177 },
+    { name:'Karl & Friedrich', desc:'Крестовский остров · пивоварня с видом на воду',    lat:59.9720, lng:30.2540 },
+    { name:'SunDay Ginza',   desc:'Крестовский остров · терраса с видом на Финский залив', lat:59.9706, lng:30.2430 },
+    { name:'Волна',          desc:'Парк 300-летия · вид на Финский залив',               lat:59.9805, lng:30.2048 },
+    { name:'Porto Maltese',  desc:'Итальянская улица · морской ресторан в центре',       lat:59.9396, lng:30.3310 },
 ];
 
 const TIME_CHIPS = ['11:00','13:00','15:00','17:00','19:00','21:00','23:00'];
@@ -726,8 +726,8 @@ function goTo(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
 
-    const noBtn = document.getElementById('btn-no');
-    noBtn.style.display = id === 's1' ? 'block' : 'none';
+    if (id === 's1') positionNoBtn();
+    else document.getElementById('btn-no').style.display = 'none';
 
     if (id === 's2') {
         if (!mapReady) { setTimeout(initMap, 60); }
@@ -742,8 +742,9 @@ let fleeing = false;
 const noBtn = document.getElementById('btn-no');
 
 function positionNoBtn() {
-    const bw = 90, bh = 44;
-    noBtn.style.left = (window.innerWidth / 2 + 16) + 'px';
+    const bh = 44;
+    noBtn.style.display = 'block';
+    noBtn.style.left = (window.innerWidth / 2 + 20) + 'px';
     noBtn.style.top  = (window.innerHeight - bh - 40) + 'px';
 }
 
@@ -763,10 +764,9 @@ window.addEventListener('resize', () => { if (noBtn.style.display === 'block') p
 /* ══ Map ═════════════════════════════════════ */
 function initMap() {
     mapReady = true;
-    lmap = L.map('map', { center:[59.944,30.316], zoom:13 });
+    lmap = L.map('map', { center:[59.944,30.316], zoom:12, attributionControl:false });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> © <a href="https://carto.com">CARTO</a>',
         subdomains: 'abcd', maxZoom: 19
     }).addTo(lmap);
 
@@ -780,7 +780,6 @@ function initMap() {
          .bindPopup(`
             <div class="pop-name">${p.name}</div>
             <div class="pop-desc">${p.desc}</div>
-            <div class="pop-check">${p.check} · средний чек</div>
             <button class="pop-btn" onclick="pickPlace(${i})">Выбрать →</button>
          `);
     });
@@ -790,7 +789,7 @@ function pickPlace(i) {
     const p = PLACES[i];
     chosenPlace = mapChosenPlace = p.name;
     document.getElementById('sel-name').textContent = p.name;
-    document.getElementById('sel-meta').textContent = p.desc + ' · ' + p.check;
+    document.getElementById('sel-meta').textContent = p.desc;
     document.getElementById('sel-place').classList.add('show');
     document.getElementById('place-input').value = '';
     document.getElementById('btn-next').disabled = false;
